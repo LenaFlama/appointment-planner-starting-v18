@@ -5,8 +5,8 @@ import { AppointmentsPage } from "./containers/appointmentsPage/AppointmentsPage
 import { ContactsPage } from "./containers/contactsPage/ContactsPage";
 
 function App() {
-  const [contacts, setContacts] =useState();
-  const [appointments, setAppointments] =useState();
+  const [contacts, setContacts] =useState([]);
+  const [appointments, setAppointments] =useState([]);
 
   function newContact (name, phone, email) {
     setContacts(prev => [...prev, {name, phone, email}])
@@ -20,8 +20,8 @@ function App() {
   const router = createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={ <Root/> }>
       <Route index element={ <Navigate to={ROUTES.CONTACTS} replace/> }/>
-      <Route path={ROUTES.CONTACTS} element={ <ContactsPage newContact={newContact} /> }/>
-      <Route path={ROUTES.APPOINTMENTS} element={ <AppointmentsPage newAppointment={newAppointment} />  }/>
+      <Route path={ROUTES.CONTACTS} element={ <ContactsPage contacts={contacts} newContact={newContact} /> }/>
+      <Route path={ROUTES.APPOINTMENTS} element={ <AppointmentsPage appointments={appointments} contacts={contacts} newAppointment={newAppointment} />  }/>
     </Route>
   ));
   

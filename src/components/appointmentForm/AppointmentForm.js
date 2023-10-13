@@ -1,7 +1,7 @@
 import React from "react";
 import { ContactPicker } from '../contactPicker/ContactPicker.js'
 
-const getTodayString = ({ handleSubmit }) => {
+const getTodayString = () => {
   const [month, day, year] = new Date()
     .toLocaleDateString("en-US")
     .split("/");

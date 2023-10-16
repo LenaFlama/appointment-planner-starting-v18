@@ -4,10 +4,10 @@ import { AppointmentForm } from "../../components/appointmentForm/AppointmentFor
 import { TileList } from "../../components/tileList/TileList";
 
 export const AppointmentsPage = ({ appointments, newAppointment, contacts }) => {
-  const [name, setName] = useState('');
-  const [contact, setContact] = useState('');
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
+  const [name, setName] = useState("");
+  const [contact, setContact] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +16,6 @@ export const AppointmentsPage = ({ appointments, newAppointment, contacts }) => 
     setContact("");
     setDate("");
     setTime("");
-   
   };
 
   return (

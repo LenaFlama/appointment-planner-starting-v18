@@ -5,15 +5,24 @@ import { AppointmentsPage } from "./containers/appointmentsPage/AppointmentsPage
 import { ContactsPage } from "./containers/contactsPage/ContactsPage";
 
 function App() {
-  const [contacts, setContacts] =useState([]);
-  const [appointments, setAppointments] =useState([]);
+  const [contacts, setContacts] = useState([]);
+  const [appointments, setAppointments] = useState([]);
 
   function newContact (name, phone, email) {
-    setContacts(prev => [...prev, {name, phone, email}])
+    setContacts([...contacts, {
+      name: name,
+      phone: phone,
+      email: email,
+    }, ])
   }
 
   function newAppointment (name, contact, date, time) {
-    setAppointments(prev => [...prev, {name, contact, date, time}] )
+    setAppointments([...appointments, {
+      name: name,
+      contact: contact,
+      date: date,
+      time: time,
+    },])
   }
 
 

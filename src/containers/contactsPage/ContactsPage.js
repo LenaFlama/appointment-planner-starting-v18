@@ -3,28 +3,22 @@ import React, { useState, useEffect } from "react";
 import { ContactForm } from "../../components/contactForm/ContactForm";
 import { TileList } from "../../components/tileList/TileList";
 
-export const ContactsPage = (props) => {
+export const ContactsPage = ({ contacts, newContact }) => {
 
-  let contacts= props.contacts
-  let newContact =props.newContact
-
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [duplicate, setDuplicate] = useState(false);
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(duplicate) {
+    if (!duplicate) {
       newContact(name, phone, email);
-      setName('');
-      setPhone('');
-      setEmail('');
-    } else {
-      alert('The contact already exist!')
+      setName("");
+      setPhone("");
+      setEmail("");
     }
-  
   };
 
   useEffect(() => {
@@ -46,7 +40,10 @@ export const ContactsPage = (props) => {
   return (
     <div>
       <section>
-        <h2>Add Contact</h2> 
+        <h2>
+          Add Contact
+          {duplicate ? " - Name Already Exists" : ""}
+        </h2> 
         <ContactForm 
         name={name}
         setName={setName}
@@ -54,7 +51,7 @@ export const ContactsPage = (props) => {
         setPhone={setPhone}
         email={email}
         setEmail={setEmail}
-        onSubmit={handleSubmit}></ContactForm>
+        handleSubmit={handleSubmit}></ContactForm>
       </section>
       <hr />
       <section>
